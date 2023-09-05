@@ -1,31 +1,13 @@
-import { ProductCard } from './components/ProductCard/ProductCard';
-import {useEffect, useState} from "react";
-import axios from "axios";
 import './App.css';
+import { Products } from './components/Products/Products';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
 function App() {
-
-  const [products, setProducts] = useState([])
-
-  useEffect(() => {
-    axios.get('https://fakestoreapi.com/products').then((result) => {
-      setProducts(result.data);
-      console.log(products)
-    })
-  }, [])
+return (
+  <Products/>
+)
   
-  return (
-    <div className="App">
- <h1>Lista de productos</h1>
- {products && products.map((product) => {
-  return(
-    <ProductCard title={product.title} price={product.price}/>
-  )
- })}
- 
-    </div>
-  );
 }
 
 export default App;
